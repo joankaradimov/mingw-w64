@@ -64,6 +64,16 @@ enum tagPROPVAR_COMPARE_FLAGS
 
 typedef int PROPVAR_COMPARE_FLAGS;
 
+#ifndef PSSTDAPI
+#ifdef _PROPSYS_
+#define PSSTDAPI STDAPI
+#define PSSTDAPI_(type)   STDAPI_(type)
+#else
+#define PSSTDAPI EXTERN_C DECLSPEC_IMPORT HRESULT STDAPICALLTYPE
+#define PSSTDAPI_(type) EXTERN_C DECLSPEC_IMPORT type STDAPICALLTYPE
+#endif
+#endif
+
 HRESULT WINAPI PropVariantChangeType(PROPVARIANT *ppropvarDest, REFPROPVARIANT propvarSrc,
                                      PROPVAR_CHANGE_FLAGS flags, VARTYPE vt);
 HRESULT WINAPI InitPropVariantFromGUIDAsString(REFGUID guid, PROPVARIANT *ppropvar);
@@ -83,6 +93,13 @@ HRESULT WINAPI PropVariantToUInt32(REFPROPVARIANT propvarIn, ULONG *ret);
 HRESULT WINAPI PropVariantToUInt64(REFPROPVARIANT propvarIn, ULONGLONG *ret);
 
 HRESULT WINAPI PropVariantToStringAlloc(REFPROPVARIANT propvarIn, WCHAR **ret);
+
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
+
+PSSTDAPI StgSerializePropVariant(const PROPVARIANT* ppropvar, SERIALIZEDPROPERTYVALUE** ppProp, ULONG* pcb);
+PSSTDAPI StgDeserializePropVariant(const SERIALIZEDPROPERTYVALUE* pprop, ULONG cbMax, PROPVARIANT* ppropvar);
+
+#endif
 
 #ifdef __cplusplus
 
