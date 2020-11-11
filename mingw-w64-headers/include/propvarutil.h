@@ -74,25 +74,25 @@ typedef int PROPVAR_COMPARE_FLAGS;
 #endif
 #endif
 
-HRESULT WINAPI PropVariantChangeType(PROPVARIANT *ppropvarDest, REFPROPVARIANT propvarSrc,
-                                     PROPVAR_CHANGE_FLAGS flags, VARTYPE vt);
-HRESULT WINAPI InitPropVariantFromGUIDAsString(REFGUID guid, PROPVARIANT *ppropvar);
-HRESULT WINAPI InitVariantFromGUIDAsString(REFGUID guid, VARIANT *pvar);
-HRESULT WINAPI InitPropVariantFromBuffer(const VOID *pv, UINT cb, PROPVARIANT *ppropvar);
-HRESULT WINAPI InitVariantFromBuffer(const VOID *pv, UINT cb, VARIANT *pvar);
-HRESULT WINAPI PropVariantToGUID(const PROPVARIANT *ppropvar, GUID *guid);
-HRESULT WINAPI VariantToGUID(const VARIANT *pvar, GUID *guid);
-INT WINAPI PropVariantCompareEx(REFPROPVARIANT propvar1, REFPROPVARIANT propvar2,
-                                PROPVAR_COMPARE_UNIT uint, PROPVAR_COMPARE_FLAGS flags);
+PSSTDAPI PropVariantChangeType(PROPVARIANT *ppropvarDest, REFPROPVARIANT propvarSrc,
+                               PROPVAR_CHANGE_FLAGS flags, VARTYPE vt);
+PSSTDAPI InitPropVariantFromGUIDAsString(REFGUID guid, PROPVARIANT *ppropvar);
+PSSTDAPI InitVariantFromGUIDAsString(REFGUID guid, VARIANT *pvar);
+PSSTDAPI InitPropVariantFromBuffer(const VOID *pv, UINT cb, PROPVARIANT *ppropvar);
+PSSTDAPI InitVariantFromBuffer(const VOID *pv, UINT cb, VARIANT *pvar);
+PSSTDAPI PropVariantToGUID(const PROPVARIANT *ppropvar, GUID *guid);
+PSSTDAPI VariantToGUID(const VARIANT *pvar, GUID *guid);
+PSSTDAPI_(INT) PropVariantCompareEx(REFPROPVARIANT propvar1, REFPROPVARIANT propvar2,
+                                    PROPVAR_COMPARE_UNIT uint, PROPVAR_COMPARE_FLAGS flags);
 
-HRESULT WINAPI PropVariantToInt16(REFPROPVARIANT propvarIn, SHORT *ret);
-HRESULT WINAPI PropVariantToInt32(REFPROPVARIANT propvarIn, LONG *ret);
-HRESULT WINAPI PropVariantToInt64(REFPROPVARIANT propvarIn, LONGLONG *ret);
-HRESULT WINAPI PropVariantToUInt16(REFPROPVARIANT propvarIn, USHORT *ret);
-HRESULT WINAPI PropVariantToUInt32(REFPROPVARIANT propvarIn, ULONG *ret);
-HRESULT WINAPI PropVariantToUInt64(REFPROPVARIANT propvarIn, ULONGLONG *ret);
+PSSTDAPI PropVariantToInt16(REFPROPVARIANT propvarIn, SHORT *ret);
+PSSTDAPI PropVariantToInt32(REFPROPVARIANT propvarIn, LONG *ret);
+PSSTDAPI PropVariantToInt64(REFPROPVARIANT propvarIn, LONGLONG *ret);
+PSSTDAPI PropVariantToUInt16(REFPROPVARIANT propvarIn, USHORT *ret);
+PSSTDAPI PropVariantToUInt32(REFPROPVARIANT propvarIn, ULONG *ret);
+PSSTDAPI PropVariantToUInt64(REFPROPVARIANT propvarIn, ULONGLONG *ret);
 
-HRESULT WINAPI PropVariantToStringAlloc(REFPROPVARIANT propvarIn, WCHAR **ret);
+PSSTDAPI PropVariantToStringAlloc(REFPROPVARIANT propvarIn, WCHAR **ret);
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
